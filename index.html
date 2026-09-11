@@ -1,24 +1,210 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My next idea · The Understudy</title>
-<style>*{box-sizing:border-box}body{margin:0;background:#f5f2e9;color:#20281f;font:18px/1.55 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:40px 6vw}header{display:flex;justify-content:space-between;border-bottom:1px solid #b8bcae;padding-bottom:22px;font-size:13px;letter-spacing:.12em;text-transform:uppercase}.stage{display:grid;grid-template-columns:1.5fr 1fr;gap:7vw;align-items:center;min-height:65vh}h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(60px,8vw,112px);letter-spacing:-.06em;line-height:.96;margin:40px 0 25px}p{max-width:530px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase}.mark{height:280px;position:relative;display:grid;place-items:center}.mark span{position:absolute;width:160px;height:220px;border:2px solid #42613b;transform:rotate(var(--r));transition:transform .5s}.mark span:nth-child(1){--r:-25deg}.mark span:nth-child(2){--r:0deg;background:#dbe4be}.mark span:nth-child(3){--r:25deg}.mark:hover span{transform:rotate(calc(var(--r) * 1.3))}a{color:inherit;text-underline-offset:5px}.links{display:flex;flex-wrap:wrap;gap:24px;padding:25px 0}.primary{background:#263d24;color:#fff;padding:12px 20px;text-decoration:none}footer{border-top:1px solid #b8bcae;padding-top:24px;font-size:14px}a:focus-visible{outline:3px solid #a54919;outline-offset:5px}@media(max-width:650px){.stage{display:block;min-height:0}.mark{height:170px;margin:30px 0}.mark span{width:100px;height:140px}header{gap:20px}main{padding:25px 7vw}}@media(prefers-reduced-motion:reduce){.mark span{transition:none}.mark:hover span{transform:rotate(var(--r))}}.live{border-top:1px solid #b8bcae;padding:22px 0 4px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}.live code{flex:1 1 300px;min-width:0;background:#fff;border:1px solid #b8bcae;padding:11px 13px;font-size:14px;overflow-wrap:anywhere}.live button{min-height:44px;padding:11px 18px;font:inherit;font-weight:600;color:#fff;background:#263d24;border:0;cursor:pointer}.live button:focus-visible{outline:3px solid #a54919;outline-offset:5px}.live small{flex-basis:100%;font-size:14px;color:#4a5247}</style>
-<main><header><b>CPVC / The Understudy</b><span>Session 02 · Starter</span></header><section class="stage"><div><h1>A small site.<br>A real beginning.</h1><p>This is my working starter. My own one-page site and one useful interaction come next.</p><p class="eyebrow">Published first. Made mine next.</p></div><div class="mark" aria-hidden="true"><span></span><span></span><span></span></div></section><div class="live"><code id="liveurl">Open this page over http:// or https:// to see its address.</code><button id="copy" type="button">Copy link</button><small id="copyhint">This is the address you submit. Not your GitHub repository address.</small></div><div class="links"><a class="primary" href="https://calpolyvibecoding.com/portal">Submit my live URL ↗</a><a id="guide" href="https://github.com/calpolyvibecoding-01/cpvc-02-understudy-template#readme">Follow the build guide →</a><a href="examples/coast/">See the coastal example →</a></div><footer>Deploy this untouched starter, open the actual live URL, then confirm your portal submission. <strong>STOP 1:</strong> only then brief the agent and build your own idea. Keep the same root URL as your site grows.</footer></main>
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kitchen Helper · The Understudy</title>
+<style>
+:root{--cream:#f7f3ea;--card:#ffffff;--ink:#20281f;--green:#2c4326;--green-soft:#42613b;--green-pale:#e4ecd9;--line:#d9d3c2;--focus:#a54919}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.5 system-ui,sans-serif}
+main{max-width:1080px;margin:auto;padding:32px 6vw 60px}
+header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:18px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--green-soft)}
+header b{color:var(--green)}
+h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(34px,5vw,52px);letter-spacing:-.02em;margin:28px 0 8px;color:var(--green)}
+.lede{max-width:640px;color:#4a5247;margin:0 0 32px}
+h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-soft);margin:0 0 14px}
+section.block{margin-bottom:40px}
+.pantry-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.pantry-item{display:flex;align-items:center;gap:8px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;font:inherit;font-size:15px;color:var(--ink);cursor:pointer}
+.pantry-item .emoji{font-size:20px}
+.pantry-item[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.pantry-item:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0 0}
+.toolbar button{font:inherit;font-size:14px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--green);cursor:pointer}
+.toolbar button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.toolbar .count{font-size:14px;color:#4a5247}
+.results{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
+.recipe-list{display:grid;gap:12px}
+.recipe-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.recipe-card h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px}
+.recipe-card .match{font-size:13px;color:var(--green-soft);margin:0 0 8px}
+.recipe-card .ing{display:flex;flex-wrap:wrap;gap:6px;font-size:13px}
+.tag{border-radius:999px;padding:3px 10px;border:1px solid var(--line)}
+.tag.have{background:var(--green-pale);border-color:var(--green-pale);color:var(--green)}
+.tag.need{background:#fdf3e7;border-color:#eddcc0;color:#7a4a12}
+.grocery{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;position:sticky;top:20px}
+.grocery ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.grocery li{display:flex;align-items:center;gap:8px;font-size:15px}
+.grocery li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green-soft);flex:none}
+.empty-state{color:#6b7263;font-size:15px;background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:20px}
+footer{border-top:1px solid var(--line);padding-top:20px;margin-top:20px;font-size:14px;color:#4a5247}
+@media(max-width:760px){.results{grid-template-columns:1fr}.grocery{position:static}}
+</style>
+<main>
+<header><b>Kitchen Helper</b><span>Session 02 · Build</span></header>
+<h1>Cook from what you already have.</h1>
+<p class="lede">Tap a few pantry items below. Kitchen Helper instantly suggests recipes you can make and builds a grocery list of only what's still missing.</p>
+
+<section class="block">
+  <h2>Your sample pantry</h2>
+  <div class="pantry-grid" id="pantry" role="group" aria-label="Select pantry items you have"></div>
+  <div class="toolbar">
+    <button type="button" id="clear-btn">Clear selection</button>
+    <span class="count" id="pantry-count">0 items selected</span>
+  </div>
+</section>
+
+<section class="block">
+  <h2>Suggested recipes &amp; grocery list</h2>
+  <div class="results">
+    <div class="recipe-list" id="recipe-list"></div>
+    <div class="grocery">
+      <h2 style="margin-top:0">Grocery list</h2>
+      <p id="grocery-empty" class="lede" style="margin:0">Nothing needed yet — select pantry items to see what's still missing.</p>
+      <ul id="grocery-list" hidden></ul>
+    </div>
+  </div>
+</section>
+
+<footer>Sample pantry items and recipes are illustrative, not sourced product or nutrition data. <a href="https://github.com/gr3gchr1s/recipe-browser#readme">About this build</a> · <a href="examples/coast/">See the coastal example</a></footer>
+</main>
 <script>
 (function(){
-  var box=document.getElementById('liveurl'),btn=document.getElementById('copy'),
-      hint=document.getElementById('copyhint'),guide=document.getElementById('guide');
-  var web=location.protocol==='http:'||location.protocol==='https:';
-  var url=web?location.origin+location.pathname:'';
-  if(web){box.textContent=url;}else{btn.hidden=true;hint.textContent='You are viewing this file directly. Publish it with GitHub Pages to get a real address.';}
-  var host=location.hostname.match(/^([a-z0-9-]+)\.github\.io$/i),
-      repo=location.pathname.split('/').filter(Boolean)[0];
-  if(host&&repo){guide.href='https://github.com/'+host[1]+'/'+repo+'#readme';}
-  btn.addEventListener('click',function(){
-    function pick(){var r=document.createRange();r.selectNodeContents(box);
-      var s=window.getSelection();s.removeAllRanges();s.addRange(r);
-      hint.textContent='Link selected. Press Ctrl+C or Cmd+C to copy it.';}
-    if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(url).then(function(){hint.textContent='Copied. Paste it into the Link field in the portal.';},pick);
-    }else{pick();}
+"use strict";
+
+var PANTRY = [
+  {id:"eggs", name:"Eggs", emoji:"🥚"},
+  {id:"milk", name:"Milk", emoji:"🥛"},
+  {id:"butter", name:"Butter", emoji:"🧈"},
+  {id:"cheddar", name:"Cheddar Cheese", emoji:"🧀"},
+  {id:"chicken", name:"Chicken Breast", emoji:"🍗"},
+  {id:"beef", name:"Ground Beef", emoji:"🥩"},
+  {id:"rice", name:"Rice", emoji:"🍚"},
+  {id:"pasta", name:"Pasta", emoji:"🍝"},
+  {id:"bread", name:"Bread", emoji:"🍞"},
+  {id:"tomato", name:"Tomatoes", emoji:"🍅"},
+  {id:"onion", name:"Onion", emoji:"🧅"},
+  {id:"garlic", name:"Garlic", emoji:"🧄"},
+  {id:"pepper", name:"Bell Pepper", emoji:"🫑"},
+  {id:"spinach", name:"Spinach", emoji:"🥬"},
+  {id:"potato", name:"Potato", emoji:"🥔"},
+  {id:"carrot", name:"Carrot", emoji:"🥕"},
+  {id:"beans", name:"Black Beans", emoji:"🫘"},
+  {id:"cannedtomato", name:"Canned Tomatoes", emoji:"🥫"},
+  {id:"oil", name:"Olive Oil", emoji:"🫒"},
+  {id:"yogurt", name:"Yogurt", emoji:"🥣"}
+];
+
+var RECIPES = [
+  {id:"garlic-pasta", name:"Garlic Butter Pasta", emoji:"🍝", ingredients:["pasta","butter","garlic","cheddar"]},
+  {id:"veggie-rice", name:"Veggie Fried Rice", emoji:"🍚", ingredients:["rice","eggs","carrot","onion","pepper"]},
+  {id:"omelette", name:"Classic Omelette", emoji:"🍳", ingredients:["eggs","cheddar","pepper","onion"]},
+  {id:"stir-fry", name:"Chicken Stir Fry", emoji:"🥘", ingredients:["chicken","pepper","onion","garlic","rice"]},
+  {id:"tacos", name:"Beef Tacos", emoji:"🌮", ingredients:["beef","onion","tomato","cheddar"]},
+  {id:"tomato-soup", name:"Tomato Spinach Soup", emoji:"🍲", ingredients:["cannedtomato","spinach","onion","garlic"]},
+  {id:"baked-potato", name:"Loaded Baked Potato", emoji:"🥔", ingredients:["potato","cheddar","butter","yogurt"]},
+  {id:"bean-bowl", name:"Black Bean Rice Bowl", emoji:"🍛", ingredients:["beans","rice","tomato","onion"]},
+  {id:"grilled-cheese", name:"Grilled Cheese Sandwich", emoji:"🥪", ingredients:["bread","cheddar","butter"]},
+  {id:"creamy-tomato-pasta", name:"Creamy Tomato Pasta", emoji:"🍝", ingredients:["pasta","cannedtomato","butter","cheddar"]}
+];
+
+var byId = {};
+PANTRY.forEach(function(p){ byId[p.id] = p; });
+
+var selected = new Set();
+var pantryEl = document.getElementById("pantry");
+var countEl = document.getElementById("pantry-count");
+var listEl = document.getElementById("recipe-list");
+var groceryListEl = document.getElementById("grocery-list");
+var groceryEmptyEl = document.getElementById("grocery-empty");
+var clearBtn = document.getElementById("clear-btn");
+
+PANTRY.forEach(function(item){
+  var btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "pantry-item";
+  btn.setAttribute("aria-pressed", "false");
+  btn.dataset.id = item.id;
+  btn.innerHTML = '<span class="emoji" aria-hidden="true">' + item.emoji + '</span><span>' + item.name + '</span>';
+  btn.addEventListener("click", function(){
+    if (selected.has(item.id)) { selected.delete(item.id); btn.setAttribute("aria-pressed","false"); }
+    else { selected.add(item.id); btn.setAttribute("aria-pressed","true"); }
+    render();
   });
+  pantryEl.appendChild(btn);
+});
+
+clearBtn.addEventListener("click", function(){
+  selected.clear();
+  pantryEl.querySelectorAll(".pantry-item").forEach(function(el){ el.setAttribute("aria-pressed","false"); });
+  render();
+});
+
+function ingredientName(id){ return byId[id] ? byId[id].name : id; }
+
+function render(){
+  countEl.textContent = selected.size + (selected.size === 1 ? " item selected" : " items selected");
+
+  var scored = RECIPES.map(function(r){
+    var matched = r.ingredients.filter(function(i){ return selected.has(i); });
+    var missing = r.ingredients.filter(function(i){ return !selected.has(i); });
+    return {recipe:r, matched:matched, missing:missing};
+  }).filter(function(s){ return s.matched.length > 0; })
+    .sort(function(a,b){
+      if (b.matched.length !== a.matched.length) return b.matched.length - a.matched.length;
+      return a.missing.length - b.missing.length;
+    });
+
+  listEl.innerHTML = "";
+  if (selected.size === 0) {
+    var empty = document.createElement("p");
+    empty.className = "empty-state";
+    empty.textContent = "Select a few pantry items above to see recipe suggestions.";
+    listEl.appendChild(empty);
+  } else if (scored.length === 0) {
+    var noMatch = document.createElement("p");
+    noMatch.className = "empty-state";
+    noMatch.textContent = "No sample recipe uses your current selection yet. Try adding a common ingredient like onion, garlic, or rice.";
+    listEl.appendChild(noMatch);
+  } else {
+    scored.forEach(function(s){
+      var card = document.createElement("div");
+      card.className = "recipe-card";
+      var tags = s.recipe.ingredients.map(function(i){
+        var have = selected.has(i);
+        return '<span class="tag ' + (have ? "have" : "need") + '">' + ingredientName(i) + '</span>';
+      }).join("");
+      card.innerHTML =
+        '<h3><span aria-hidden="true">' + s.recipe.emoji + '</span>' + s.recipe.name + '</h3>' +
+        '<p class="match">' + s.matched.length + ' of ' + s.recipe.ingredients.length + ' ingredients on hand</p>' +
+        '<div class="ing">' + tags + '</div>';
+      listEl.appendChild(card);
+    });
+  }
+
+  var suggested = scored.slice(0, 5);
+  var groceryNames = [];
+  var seen = new Set();
+  suggested.forEach(function(s){
+    s.missing.forEach(function(i){
+      if (!seen.has(i)) { seen.add(i); groceryNames.push(ingredientName(i)); }
+    });
+  });
+  groceryNames.sort();
+
+  if (groceryNames.length === 0) {
+    groceryEmptyEl.hidden = false;
+    groceryListEl.hidden = true;
+    groceryListEl.innerHTML = "";
+    if (selected.size > 0 && scored.length > 0) {
+      groceryEmptyEl.textContent = "Nothing to buy — your pantry already covers the suggested recipes.";
+    } else {
+      groceryEmptyEl.textContent = "Nothing needed yet — select pantry items to see what's still missing.";
+    }
+  } else {
+    groceryEmptyEl.hidden = true;
+    groceryListEl.hidden = false;
+    groceryListEl.innerHTML = groceryNames.map(function(n){ return "<li>" + n + "</li>"; }).join("");
+  }
+}
+
+render();
 })();
 </script>
 </html>
